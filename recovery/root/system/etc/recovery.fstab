@@ -1,0 +1,39 @@
+#
+# TWRP Filesystem Table (fstab)
+#
+# This file defines the mount points for all partitions handled by TWRP.
+# Correct paths, types, and flags are essential for mounting, formatting,
+# and flashing operations.
+#
+# <src>                 <mnt_point>     <type>    <mnt_flags and options>                                                                                                                         <fs_mgr_flags>
+#
+
+#-------------------------------------------------------------------------
+# Boot/Recovery Control
+#-------------------------------------------------------------------------
+# The /misc partition is used by the system to pass commands between
+# the main OS and recovery (e.g., to boot into recovery).
+/dev/block/by-name/misc /misc           emmc      defaults                                                                                                                                        defaults
+
+#-------------------------------------------------------------------------
+# Logical Partitions (Members of the 'super' partition)
+#-------------------------------------------------------------------------
+# These partitions are read-only (ro) and part of the dynamic partition system.
+# 'wait,slotselect,logical' ensures they are mounted from the correct
+# active slot and are recognized as logical partitions.
+system                /system         ext4      ro                                                                                                                                              wait,slotselect,logical
+vendor                /vendor         ext4      ro                                                                                                                                              wait,slotselect,logical
+product               /product        ext4      ro                                                                                                                                              wait,slotselect,logical
+system_ext            /system_ext     ext4      ro                                                                                                                                              wait,slotselect,logical
+vendor_dlkm           /vendor_dlkm    ext4      ro                                                                                                                                              wait,slotselect,logical
+odm_dlkm              /odm_dlkm       ext4      ro                                                                                                                                              wait,slotselect,logical
+
+#-------------------------------------------------------------------------
+# User Data & Metadata
+#-------------------------------------------------------------------------
+# Metadata partition, often used to store encryption keys.
+# 'check' allows file system checking; 'formattable' allows formatting in TWRP.
+/dev/block/by-name/metadata /metadata       ext4      noatime,nosuid,nodev,discard                                                                                                            wait,check,formattable
+
+# The primary user data partition.
+/dev/block/by-name/userdata /data           f2fs      noatime,nosuid,nodev,discard,noflush_merge,fsync_mode=nobarrier,reserve_root=134217,resgid=1065,inlinecrypt wait,check,formattable,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,keydirectory=/metadata/vold/metadata_encryption
