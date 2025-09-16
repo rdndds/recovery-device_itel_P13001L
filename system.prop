@@ -1,0 +1,91 @@
+#
+# Copyright (C) 2025 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+#
+# This file defines the packages, properties, and features
+# to include in the product build.
+#
+
+#----------------------------------------------------------------------
+# Hardware & Platform
+#----------------------------------------------------------------------
+
+# The base board platform identifier
+ro.board.platform=mt6789
+
+# The vendor-specific platform name (MediaTek)
+ro.vendor.mediatek.platform=MT6789
+
+# The primary hardware identifier
+ro.hardware=mt8781
+
+# The hardware name reported by the bootloader
+ro.boot.hardware=mt8781
+
+#----------------------------------------------------------------------
+# Debugging & ADB
+#----------------------------------------------------------------------
+
+# Allow all processes to be debuggable
+ro.debuggable=1
+
+# Disable secure mode (allows root access and disables certain security checks)
+ro.secure=0
+
+# Disable ADB authentication (allows ADB connection without RSA key confirmation)
+ro.adb.secure=0
+
+# Enable the ADB daemon (adbd) by default on boot
+persist.service.adb.enable=1
+
+# Persistently set the debuggable flag
+persist.service.debuggable=1
+
+# Set the path for custom vendor logs
+ro.vendor.customer_logpath=/data
+
+#----------------------------------------------------------------------
+# USB Configuration
+#----------------------------------------------------------------------
+
+# Set the default USB functions when connected (MTP + ADB)
+persist.sys.usb.config=mtp,adb
+
+# Define the default USB protocol as MTP (Media Transfer Protocol)
+ro.sys.usb.storage.type=mtp
+
+#----------------------------------------------------------------------
+# Security & Encryption
+#----------------------------------------------------------------------
+
+# Specify the Keymaster HAL version
+keymaster_ver=4.1
+
+# Specify the Gatekeeper HAL implementation (TrustKernel)
+ro.hardware.gatekeeper=trustkernel
+
+# Enable support for MediaTek's TrustKernel Trusted Execution Environment (TEE)
+ro.vendor.mtk_trustkernel_tee_support=1
+
+# Set the encryption mode for file-based encryption (FBE) filenames
+ro.crypto.volume.filenames_mode=aes-256-cts
+
+#----------------------------------------------------------------------
+# Filesystem
+#----------------------------------------------------------------------
+
+# Define the fstab prefix path
+ro.postinstall.fstab.prefix=/system
