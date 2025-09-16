@@ -19,6 +19,9 @@
 # to include in the product build.
 #
 
+# Path to the device-specific tree
+LOCAL_PATH := device/itel/P13001L
+
 #----------------------------------------------------------------------
 # Inherited Products
 #----------------------------------------------------------------------
@@ -107,28 +110,21 @@ AB_OTA_POSTINSTALL_CONFIG += \
 #----------------------------------------------------------------------
 
 PRODUCT_PACKAGES += \
-    # Boot & Health HALs
     android.hardware.boot@1.2-mtkimpl \
     android.hardware.boot@1.2-mtkimpl.recovery \
     android.hardware.health@2.1-impl \
     android.hardware.health@2.1-service \
-    \
-    # Fastbootd
     android.hardware.fastboot@1.0-impl-mock \
     fastbootd \
-    \
-    # Security & Keymaster
     android.hardware.keymaster@4.1 \
     android.hardware.security.keymint \
     android.hardware.security.secureclock \
     android.hardware.security.sharedsecret \
-    \
-    # Update Engine & OTA
     cppreopts.sh \
     otapreopt_script \
     update_engine \
     update_engine_sideload \
-    update_verifier \
+    update_verifier
 
 #----------------------------------------------------------------------
 # Product Packages (Debug)
