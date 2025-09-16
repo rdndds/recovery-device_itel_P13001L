@@ -1,0 +1,1 @@
+DEVICE_PATH := device/itel/P13001L
