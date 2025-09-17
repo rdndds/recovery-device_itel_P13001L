@@ -1,3 +1,6 @@
+import /init.trustkernel.rc
+import /vendor/etc/init/trustkernel.rc
+
 #---------------------------------------------------------------------
 # Early Initialization
 #---------------------------------------------------------------------
@@ -29,6 +32,10 @@ on fs && property:ro.debuggable=0
     # Start the ADB daemon for debugging
     start adbd
 
+# We need vold early for metadata encryption
+on early-fs
+    start vold
+
 # Triggered after 'fs' but before 'post-fs'.
 on late-fs
     # Mount partitions that are marked as 'late' in the fstab
@@ -57,6 +64,9 @@ on post-fs-data
 on boot
     # Start the MediaTek preloader path linking utility service
     start mtk.plpath.utils.link
+
+    #test if this file is being load
+    mkdir /mnt/vendor/mt8781
 
 #---------------------------------------------------------------------
 # Property-Based Triggers
