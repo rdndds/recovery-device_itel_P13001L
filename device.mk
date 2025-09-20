@@ -118,8 +118,6 @@ PRODUCT_PACKAGES += \
     fastbootd \
 	android.hardware.keymaster@4.1 \
     android.hardware.security.keymint \
-    android.hardware.security.secureclock \
-    android.hardware.security.sharedsecret \
     cppreopts.sh \
     otapreopt_script \
     update_engine \

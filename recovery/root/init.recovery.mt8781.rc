@@ -115,10 +115,7 @@ service mtk.plpath.utils.link /system/bin/mtk_plpath_utils
     class main
     user root
     group root system
-    # 'oneshot': The service exits after running and does not restart.
     oneshot
-    # 'disabled': This service will not start automatically;
     # it must be started by a trigger (see 'on boot').
     disabled
-    # Sets the SELinux security context for the service.
     seclabel u:r:recovery:s0
