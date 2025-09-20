@@ -68,22 +68,6 @@ persist.sys.usb.config=mtp,adb
 ro.sys.usb.storage.type=mtp
 
 #----------------------------------------------------------------------
-# Security & Encryption
-#----------------------------------------------------------------------
-
-# Specify the Keymaster HAL version
-keymaster_ver=4.1
-
-# Specify the Gatekeeper HAL implementation (TrustKernel)
-ro.hardware.gatekeeper=trustkernel
-
-# Enable support for MediaTek's TrustKernel Trusted Execution Environment (TEE)
-ro.vendor.mtk_trustkernel_tee_support=1
-
-# Set the encryption mode for file-based encryption (FBE) filenames
-ro.crypto.volume.filenames_mode=aes-256-cts
-
-#----------------------------------------------------------------------
 # Filesystem
 #----------------------------------------------------------------------
 

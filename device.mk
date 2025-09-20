@@ -116,13 +116,13 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.1-service \
     android.hardware.fastboot@1.0-impl-mock \
     fastbootd \
-	android.hardware.keymaster@4.1 \
-    android.hardware.security.keymint \
     cppreopts.sh \
     otapreopt_script \
     update_engine \
     update_engine_sideload \
-    update_verifier
+    update_verifier \
+    mtk_plpath_utils \
+    mtk_plpath_utils.recovery
 
 #----------------------------------------------------------------------
 # Product Packages (Debug)
@@ -131,16 +131,3 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES_DEBUG += \
     bootctl \
     update_engine_client
-
-#----------------------------------------------------------------------
-# TWRP/Recovery Configuration
-#----------------------------------------------------------------------
-# These are modules needed by recovery, built as part of the main build
-
-# Add Keymaster HAL to recovery modules
-TARGET_RECOVERY_DEVICE_MODULES += \
-    android.hardware.keymaster@4.1
-
-# Relink Keymaster HAL library for recovery
-TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.1
